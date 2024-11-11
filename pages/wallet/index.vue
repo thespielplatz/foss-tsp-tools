@@ -1,6 +1,6 @@
 <template>
   <div class="pt-10">
-    <div class="text-xl font-black">LNURL Web Wallet</div>
+    <div class="text-2xl font-black">LNURL Web Wallet</div>
   </div>
   <div class="pt-5">
     <div class="text-xl font-bold">Wallet</div>
