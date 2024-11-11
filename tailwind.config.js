@@ -10,6 +10,10 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        'primary': '#C56200',
+        'primary-lighter': '#E67300',
+      }
     },
   },
 }
