@@ -4,13 +4,21 @@
   </div>
   <div class="pt-5">
     <div class="text-xl font-bold">Wallet</div>
-    <textarea
+    <textarea v-if="seedVisible"
       class="w-full h-20 border-2 border-gray-300 rounded-lg p-2"
       v-model="wallet"
       placeholder="seed"></textarea>
+      <div v-else class="pb-1">
+      <div class="w-full h-20 border-2 border-gray-300 rounded-lg p-2 blur-sm">
+        {{ replaceCharacters(wallet, '#') }}
+      </div>
+    </div>
     <div class="flex gap-1">
       <ButtonDefault @click="generateNewWallet">
         <b-icon-plus-square /><span>New</span>
+      </ButtonDefault>
+      <ButtonDefault @click="toggleSeedVisibility">
+        <b-icon-eye-slash-fill v-if="!seedVisible" /><b-icon-eye-fill v-if="seedVisible" /><span>Seed</span>
       </ButtonDefault>
       <ButtonDefault @click="toggleAutoSave">
         <b-icon-floppy v-if="!autoSave" /><b-icon-floppy-fill v-if="autoSave" /><span>Autosave: </span><span>{{ autoSave ? 'ON ' : 'OFF'}}</span>
@@ -57,6 +65,7 @@ const lnurlType = ref('')
 const derivationPath = ref('m/0\'')
 const loginResult = ref<null | boolean>(null)
 const autoSave = ref(false)
+const seedVisible = ref(false)
 const { $localStorage } = useNuxtApp()
 
 const generateNewWallet = async () => {
@@ -89,6 +98,10 @@ const toggleAutoSave = () => {
   } else {
     $localStorage.removeItem(LOCALSTORAG_KEY_MNEMONIC)
   }
+}
+
+const toggleSeedVisibility = () => {
+  seedVisible.value = !seedVisible.value
 }
 
 watch(lnurl, async (newValue) => {
