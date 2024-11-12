@@ -8,9 +8,14 @@
       class="w-full h-20 border-2 border-gray-300 rounded-lg p-2"
       v-model="wallet"
       placeholder="seed"></textarea>
-    <ButtonDefault @click="generateNewWallet">
-      <b-icon-plus-square /><span>New</span>
-    </ButtonDefault>
+    <div class="flex gap-1">
+      <ButtonDefault @click="generateNewWallet">
+        <b-icon-plus-square /><span>New</span>
+      </ButtonDefault>
+      <ButtonDefault @click="toggleAutoSave">
+        <b-icon-floppy v-if="!autoSave" /><b-icon-floppy-fill v-if="autoSave" /><span>Autosave: </span><span>{{ autoSave ? 'ON ' : 'OFF'}}</span>
+      </ButtonDefault>
+    </div>
   </div>
   <div class="pt-5">
     <div class="text-xl font-bold">LNURL</div>
@@ -44,24 +49,47 @@
 
 import ButtonDefault from '~/components/wallet/ButtonDefault.vue'
 
+const LOCALSTORAG_KEY_MNEMONIC = 'mnemonic'
+
 const wallet = ref('')
 const lnurl = ref('')
 const lnurlType = ref('')
 const derivationPath = ref('m/0\'')
 const loginResult = ref<null | boolean>(null)
+const autoSave = ref(false)
+const { $localStorage } = useNuxtApp()
 
 const generateNewWallet = async () => {
   const data = await $fetch('/api/hd-wallet/generateRandomMnemonic')
   if (data) {
     wallet.value = data
+    if (autoSave.value) {
+      $localStorage.setItem(LOCALSTORAG_KEY_MNEMONIC, wallet.value)
+    }
   }
 }
 
 onMounted(() => {
   nextTick(async () => {
-    await generateNewWallet()
+    const mnemonic = $localStorage.getItem(LOCALSTORAG_KEY_MNEMONIC)
+    if (mnemonic) {
+      wallet.value = mnemonic
+      autoSave.value = true
+    } else {
+      await generateNewWallet()
+    }
   })
 })
+
+const toggleAutoSave = () => {
+  autoSave.value = !autoSave.value
+
+  if (autoSave.value) {
+    $localStorage.setItem(LOCALSTORAG_KEY_MNEMONIC, wallet.value)
+  } else {
+    $localStorage.removeItem(LOCALSTORAG_KEY_MNEMONIC)
+  }
+}
 
 watch(lnurl, async (newValue) => {
   loginResult.value = null
