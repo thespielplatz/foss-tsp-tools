@@ -1,7 +1,7 @@
 import { randomBytes } from 'crypto'
 import * as bip39 from 'bip39'
 import * as bip32 from 'bip32'
-import * as base58 from 'bs58'
+import { default as base58 } from 'bs58'
 import * as ecc from 'tiny-secp256k1'
 
 import HDNode from './HDNode.js'
@@ -88,6 +88,11 @@ export default class HDWallet {
 
   getNodeAtPath(account: number, change: number, index: number) {
     const { derivedNode } = HDWallet.deriveNodeAtPath(this.bip32Node, `${DEFAUT_HD_PATH}/${account}'/${change}/${index}`)
+    return new HDNode(derivedNode)
+  }
+
+  getNodeAtCustomPath(customPath: string) {
+    const { derivedNode } = HDWallet.deriveNodeAtPath(this.bip32Node, customPath)
     return new HDNode(derivedNode)
   }
 }

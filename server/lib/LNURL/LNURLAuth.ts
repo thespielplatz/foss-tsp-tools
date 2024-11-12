@@ -1,6 +1,7 @@
 // Specification LNURLAuth https://github.com/lnurl/luds/blob/luds/04.md
 
-import * as secp256k1 from 'secp256k1'
+import { default as secp256k1 } from 'secp256k1'
+
 import { Buffer } from 'buffer'
 
 import LNURL from './LNURL'

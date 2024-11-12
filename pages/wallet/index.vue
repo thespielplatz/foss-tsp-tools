@@ -25,13 +25,18 @@
   <div v-if="false && lnurlType == 'none'" class="pt-5">
     <div>Not Implemented</div>
   </div>
-  <div v-if="false && lnurlType == 'auth'" >
+  <div v-if="lnurlType == 'auth'" >
     <div>
-      Derivation Path: 
+      <span class="font-bold">Derivation Path: </span><span class="font-mono">{{ derivationPath }}</span>
     </div>
     <ButtonDefault @click="login">
-      <b-icon-plus-square /><span>Login</span>
+      <b-icon-box-arrow-in-right /><span>Login</span>
     </ButtonDefault>
+  </div>
+  <div v-if="loginResult != null" >
+    <div>
+      <span class="font-bold">Result: </span><span :class="loginResult ? 'text-green-600' : 'text-red-700'">{{ loginResult }}</span>
+    </div>
   </div>
 </template>
  
@@ -42,6 +47,8 @@ import ButtonDefault from '~/components/wallet/ButtonDefault.vue'
 const wallet = ref('')
 const lnurl = ref('')
 const lnurlType = ref('')
+const derivationPath = ref('m/0\'')
+const loginResult = ref<null | boolean>(null)
 
 const generateNewWallet = async () => {
   const data = await $fetch('/api/hd-wallet/generateRandomMnemonic')
@@ -57,6 +64,7 @@ onMounted(() => {
 })
 
 watch(lnurl, async (newValue) => {
+  loginResult.value = null
   lnurlType.value = ''
 
   let lnurlObject
@@ -73,8 +81,15 @@ watch(lnurl, async (newValue) => {
   lnurlType.value = getLnurlType(lnurlObject) || ''
 })
 
-const login = () => {
-
+const login = async () => {
+  loginResult.value = await $fetch('/api/lnurl-auth/login', {
+    method: 'POST',
+    body: { 
+      lnurl: lnurl.value,
+      derivationPath: derivationPath.value,
+      mnemonic: wallet.value
+     },
+  })
 }
 
 </script>
