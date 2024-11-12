@@ -4,47 +4,33 @@
 
 Foos Tools of TheSpielplatz
 
-## Disclaimer
+## Project Overview
 
-> [!NOTE]
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Features: See [Features](docs/FEATURES.md)
 
-## Nuxt Minimal Starter
+Roadmap: See [Features](docs/ROADMAP.md)
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## How to use
 
-### Setup
+### Docker
 
-Make sure to install dependencies:
+- Install docker
 
 ```bash
-# npm
-npm install
+docker run thespielplatz/foos-tsp-tools:latest
 ```
 
-### Development Server
+- Open http://localhost:3000
 
-Start the development server on `http://localhost:3000`:
+### From source
+
+- Checkout this repo
 
 ```bash
-# npm
+npm i
 npm run dev
 ```
 
-### Production
+## Support
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+If you like this project, give it a star! If you love it, fork it and take it out for dinner. 🌟🍽️ And hey, why not [send some tip love?](https://thespielplatz.com/tip-jar)
