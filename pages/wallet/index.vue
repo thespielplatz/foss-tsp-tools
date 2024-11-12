@@ -18,13 +18,16 @@
       class="w-full h-20 border-2 border-gray-300 rounded-lg p-2"
       v-model="lnurl"
       placeholder="Paste your lnurl here"></textarea>
+      <div>
+        <span class="font-bold">Type: </span>{{ lnurlType }}
+      </div>
   </div>
-  <div v-if="lnurlType == 'none'" class="pt-5">
+  <div v-if="false && lnurlType == 'none'" class="pt-5">
     <div>Not Implemented</div>
   </div>
-  <div v-if="lnurlType == 'auth'" >
+  <div v-if="false && lnurlType == 'auth'" >
     <div>
-      Path: 
+      Derivation Path: 
     </div>
     <ButtonDefault @click="login">
       <b-icon-plus-square /><span>Login</span>
