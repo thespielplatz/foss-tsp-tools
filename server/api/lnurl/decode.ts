@@ -1,6 +1,6 @@
 import LNURL from '~/server/lib/LNURL/LNURL'
 
-export default defineEventHandler((event) => {
+export default defineEventHandler((event): string => {
   const query = getQuery(event)
   if (!(query.lnurl)) {
     throw new Error('Missing lnurl parameter')

@@ -2,7 +2,7 @@ import HDWallet from '~/server/lib/HDWallet/HDWallet'
 import LNURLAuth from '~/server/lib/LNURL/LNURLAuth'
 import getParamSafe from '~/server/utils/getParamSafe'
 
-export default defineEventHandler(async (event): Promise<boolean> => {
+export default defineEventHandler(async (event): Promise<string> => {
   const body = await readBody(event)
   const lnurl = getParamSafe(body, 'lnurl')
   const mnemonic = getParamSafe(body, 'mnemonic')
@@ -16,6 +16,5 @@ export default defineEventHandler(async (event): Promise<boolean> => {
     privateKeyAsHex: signingKey.getPrivateKeyAsHex(),
   })
   const callbackUrl = lnurlAuthModule.getLNURLAuthCallbackUrl(lnurl)
-  const data = await fetch(callbackUrl.toString())
-  return data.status == 200
+  return callbackUrl.toString()
 })

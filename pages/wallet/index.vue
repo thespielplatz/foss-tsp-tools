@@ -42,12 +42,14 @@
     <div>
       <span class="font-bold">Derivation Path: </span><span class="font-mono">{{ derivationPath }}</span>
     </div>
-    <ButtonDefault @click="loginViaBackend">
-      <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via Backend)</span>
-    </ButtonDefault>
-    <ButtonDefault @click="loginViaFrontend" class="hidden">
-      <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via Browser)</span>
-    </ButtonDefault>
+    <div class="flex gap-1">
+      <ButtonDefault @click="authLoginViaFrontend">
+        <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via Browser)</span>
+      </ButtonDefault>
+      <ButtonDefault @click="authLoginViaBackend">
+        <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via Backend)</span>
+      </ButtonDefault>
+    </div>
   </div>
   <div v-if="loginResult != null" >
     <div>
@@ -143,7 +145,7 @@ const prepareLnurl = async (lnurl: string) => {
   lnurlType.value = getLnurlType(lnurlObject) || ''
 }
 
-const loginViaBackend = async () => {
+const authLoginViaBackend = async () => {
   loginResult.value = await $fetch('/api/lnurl-auth/login', {
     method: 'POST',
     body: { 
@@ -154,8 +156,8 @@ const loginViaBackend = async () => {
   })
 }
 
-const loginViaFrontend = async () => {
-  loginResult.value = await $fetch('/api/lnurl-auth/login-frontend', {
+const authLoginViaFrontend = async () => {
+   const callbackUrl = await $fetch('/api/lnurl-auth/prepareForFrontend', {
     method: 'POST',
     body: { 
       lnurl: lnurl.value,
@@ -163,6 +165,9 @@ const loginViaFrontend = async () => {
       mnemonic: wallet.value
      },
   })
+
+  const data = await fetch(callbackUrl)
+  loginResult.value = data.status == 200
 }
 
 </script>
