@@ -42,8 +42,11 @@
     <div>
       <span class="font-bold">Derivation Path: </span><span class="font-mono">{{ derivationPath }}</span>
     </div>
-    <ButtonDefault @click="login">
-      <b-icon-box-arrow-in-right /><span>Login</span>
+    <ButtonDefault @click="loginViaBackend">
+      <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via Backend)</span>
+    </ButtonDefault>
+    <ButtonDefault @click="loginViaFrontend" class="hidden">
+      <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via Browser)</span>
     </ButtonDefault>
   </div>
   <div v-if="loginResult != null" >
@@ -104,26 +107,55 @@ const toggleSeedVisibility = () => {
   seedVisible.value = !seedVisible.value
 }
 
+let nextPrepareRequest: string | null = null
+
 watch(lnurl, async (newValue) => {
   loginResult.value = null
   lnurlType.value = ''
 
+  if (nextPrepareRequest == null) {
+    await prepareLnurl(newValue)
+  } else {
+    nextPrepareRequest = newValue
+  }
+})
+
+const prepareLnurl = async (lnurl: string) => {
   let lnurlObject
   try {
     const data = await $fetch('/api/lnurl/decode', {
-      query: { lnurl: newValue }
+      query: { lnurl }
     })
     lnurlObject = data
-  } catch (e) {
+  } catch (error) {
+    lnurlType.value = 'Could not decode lnurl or type not implemented yet'
+  }
+
+  if (nextPrepareRequest != null) {
+    const nextLnurl = nextPrepareRequest
+    nextPrepareRequest = null
+    await prepareLnurl(nextLnurl)
     return
   }
+
   if (!lnurlObject) return
 
   lnurlType.value = getLnurlType(lnurlObject) || ''
-})
+}
 
-const login = async () => {
+const loginViaBackend = async () => {
   loginResult.value = await $fetch('/api/lnurl-auth/login', {
+    method: 'POST',
+    body: { 
+      lnurl: lnurl.value,
+      derivationPath: derivationPath.value,
+      mnemonic: wallet.value
+     },
+  })
+}
+
+const loginViaFrontend = async () => {
+  loginResult.value = await $fetch('/api/lnurl-auth/login-frontend', {
     method: 'POST',
     body: { 
       lnurl: lnurl.value,
