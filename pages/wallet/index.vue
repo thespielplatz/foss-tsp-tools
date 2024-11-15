@@ -146,28 +146,42 @@ const prepareLnurl = async (lnurl: string) => {
 }
 
 const authLoginViaBackend = async () => {
-  loginResult.value = await $fetch('/api/lnurl-auth/login', {
-    method: 'POST',
-    body: { 
-      lnurl: lnurl.value,
-      derivationPath: derivationPath.value,
-      mnemonic: wallet.value
-     },
-  })
+  loginResult.value = null
+
+  try {
+    loginResult.value = await $fetch('/api/lnurl-auth/login', {
+      method: 'POST',
+      body: { 
+        lnurl: lnurl.value,
+        derivationPath: derivationPath.value,
+        mnemonic: wallet.value
+      },
+    })
+  } catch (error) {
+    console.error(error)
+    loginResult.value = false
+  }
 }
 
 const authLoginViaFrontend = async () => {
-   const callbackUrl = await $fetch('/api/lnurl-auth/prepareForFrontend', {
-    method: 'POST',
-    body: { 
-      lnurl: lnurl.value,
-      derivationPath: derivationPath.value,
-      mnemonic: wallet.value
-     },
-  })
+  loginResult.value = null
 
-  const data = await fetch(callbackUrl)
-  loginResult.value = data.status == 200
+  try {
+    const callbackUrl = await $fetch('/api/lnurl-auth/prepareForFrontend', {
+      method: 'POST',
+      body: { 
+        lnurl: lnurl.value,
+        derivationPath: derivationPath.value,
+        mnemonic: wallet.value
+      },
+    })
+
+    const data = await fetch(callbackUrl)
+    loginResult.value = data.status == 200
+   } catch (error) {
+    console.error(error)
+    loginResult.value = false
+   }
 }
 
 </script>
