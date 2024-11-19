@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="max-w-screen-lg mx-auto">
+    <div class="max-w-screen-md mx-auto">
       <slot />
     </div>
   </div>

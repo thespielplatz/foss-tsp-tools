@@ -7,8 +7,8 @@
     <textarea v-if="seedVisible"
       class="w-full h-20 border-2 border-gray-300 rounded-lg p-2"
       v-model="wallet"
-      placeholder="seed"></textarea>
-      <div v-else class="pb-1">
+      placeholder="seed" />
+    <div v-else class="pb-1">
       <div class="w-full h-20 border-2 border-gray-300 rounded-lg p-2 blur-sm">
         {{ replaceCharacters(wallet, '#') }}
       </div>
