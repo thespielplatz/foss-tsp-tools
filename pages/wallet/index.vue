@@ -50,6 +50,20 @@
         <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via Backend)</span>
       </ButtonDefault>
     </div>
+    <div class="mt-2 flex gap-1">
+      <ButtonDefault @click="authLoginViaNewTab">
+        <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via new tab)</span>
+      </ButtonDefault>
+      <LinkDefault
+        v-if="callbackUrlForLoginWithNewTab"
+        class="ms-2"
+        target="_blank"
+        rel="noopener noreferrer"
+        :href="callbackUrlForLoginWithNewTab"
+      >
+        <b-icon-box-arrow-up-right /><span>Open in new tab</span>
+      </LinkDefault>
+    </div>
   </div>
   <div v-if="loginResult != null" >
     <div>
@@ -60,6 +74,7 @@
  
 <script lang="ts" setup>
 
+import LinkDefault from '~/components/typography/LinkDefault.vue'
 import ButtonDefault from '~/components/wallet/ButtonDefault.vue'
 
 const LOCALSTORAG_KEY_MNEMONIC = 'mnemonic'
@@ -184,4 +199,22 @@ const authLoginViaFrontend = async () => {
    }
 }
 
+const callbackUrlForLoginWithNewTab = ref<string | null>(null)
+const authLoginViaNewTab = async () => {
+  loginResult.value = null
+
+  try {
+    callbackUrlForLoginWithNewTab.value = await $fetch('/api/lnurl-auth/prepareForFrontend', {
+      method: 'POST',
+      body: { 
+        lnurl: lnurl.value,
+        derivationPath: derivationPath.value,
+        mnemonic: wallet.value
+      },
+    })
+   } catch (error) {
+    console.error(error)
+    loginResult.value = false
+   }
+}
 </script>
