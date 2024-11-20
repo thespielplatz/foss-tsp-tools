@@ -1,6 +1,6 @@
 {
   "name": "food-tsp-tools",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +12,7 @@
     "postinstall": "nuxt prepare",
     "bump-patch": "npm version patch && git push && git push --tags",
     "bump-minor": "npm version minor && git push && git push --tags",
-    "bump-major": "npm version major && git push && git push --tags"    
+    "bump-major": "npm version major && git push && git push --tags"
   },
   "dependencies": {
     "bech32": "^2.0.0",
