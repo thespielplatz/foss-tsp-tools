@@ -181,7 +181,7 @@ const authLoginViaNewTab = async () => {
   loginResult.value = null
 
   try {
-    callbackUrlForLoginWithNewTab.value = await $fetch('/api/lnurl-auth/prepareForFrontend', {
+    callbackUrlForLoginWithNewTab.value = await $fetch<string>('/api/lnurl-auth/prepareForFrontend', {
       method: 'POST',
       body: { 
         lnurl: lnurl.value,
@@ -189,6 +189,7 @@ const authLoginViaNewTab = async () => {
         mnemonic: wallet.value
       },
     })
+    window.open(callbackUrlForLoginWithNewTab.value, '_blank');
    } catch (error) {
     console.error(error)
     loginResult.value = false
