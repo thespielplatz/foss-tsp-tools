@@ -43,17 +43,14 @@
       <span class="font-bold">Derivation Path: </span><span class="font-mono">{{ derivationPath }}</span>
     </div>
     <div class="flex gap-1">
-      <ButtonDefault @click="authLoginViaFrontend">
-        <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via Browser)</span>
+      <ButtonDefault @click="authLoginViaNewTab">
+        <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via new tab)</span>
       </ButtonDefault>
       <ButtonDefault @click="authLoginViaBackend">
         <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via Backend)</span>
       </ButtonDefault>
     </div>
     <div class="mt-2 flex gap-1">
-      <ButtonDefault @click="authLoginViaNewTab">
-        <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via new tab)</span>
-      </ButtonDefault>
       <LinkDefault
         v-if="callbackUrlForLoginWithNewTab"
         class="ms-2"
@@ -86,6 +83,8 @@ const derivationPath = ref('m/0\'')
 const loginResult = ref<null | boolean>(null)
 const autoSave = ref(false)
 const seedVisible = ref(false)
+const callbackUrlForLoginWithNewTab = ref<string | null>(null)
+
 const { $localStorage } = useNuxtApp()
 
 const generateNewWallet = async () => {
@@ -178,28 +177,6 @@ const authLoginViaBackend = async () => {
   }
 }
 
-const authLoginViaFrontend = async () => {
-  loginResult.value = null
-
-  try {
-    const callbackUrl = await $fetch('/api/lnurl-auth/prepareForFrontend', {
-      method: 'POST',
-      body: { 
-        lnurl: lnurl.value,
-        derivationPath: derivationPath.value,
-        mnemonic: wallet.value
-      },
-    })
-
-    const data = await fetch(callbackUrl)
-    loginResult.value = data.status == 200
-   } catch (error) {
-    console.error(error)
-    loginResult.value = false
-   }
-}
-
-const callbackUrlForLoginWithNewTab = ref<string | null>(null)
 const authLoginViaNewTab = async () => {
   loginResult.value = null
 
