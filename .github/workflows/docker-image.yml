@@ -3,12 +3,13 @@ name: Docker build and push to docker hub on tag
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*'
 
 jobs:
   docker:
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -38,7 +39,6 @@ jobs:
             ${{ vars.DOCKER_TAG }}:${{ steps.extract_version.outputs.version }}
 
   deploy:
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: docker
     steps:
