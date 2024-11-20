@@ -10,7 +10,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "bump-patch": "npx changelogen@latest --release",
+    "bump-patch": "npx changelogen@latest --release"
   },
   "dependencies": {
     "bech32": "^2.0.0",
