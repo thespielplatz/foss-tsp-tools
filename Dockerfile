@@ -32,6 +32,7 @@ ENV PORT=$PORT
 #ENV HOST 0.0.0.0
 
 COPY --from=build /src/.output /src/.output
+COPY package.json /src
 # Optional, only needed if you rely on unbundled dependencies
 # COPY --from=build /src/node_modules /src/node_modules
 
