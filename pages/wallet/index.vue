@@ -44,22 +44,11 @@
     </div>
     <div class="flex gap-1">
       <ButtonDefault @click="authLoginViaNewTab">
-        <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via new tab)</span>
+        <b-icon-box-arrow-up-right /><span>Login</span><span class="italic text-xs">(Request via new tab)</span>
       </ButtonDefault>
       <ButtonDefault @click="authLoginViaBackend">
         <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via Backend)</span>
       </ButtonDefault>
-    </div>
-    <div class="mt-2 flex gap-1">
-      <LinkDefault
-        v-if="callbackUrlForLoginWithNewTab"
-        class="ms-2"
-        target="_blank"
-        rel="noopener noreferrer"
-        :href="callbackUrlForLoginWithNewTab"
-      >
-        <b-icon-box-arrow-up-right /><span>Open in new tab</span>
-      </LinkDefault>
     </div>
   </div>
   <div v-if="loginResult != null" >
@@ -71,7 +60,6 @@
  
 <script lang="ts" setup>
 
-import LinkDefault from '~/components/typography/LinkDefault.vue'
 import ButtonDefault from '~/components/wallet/ButtonDefault.vue'
 
 const LOCALSTORAG_KEY_MNEMONIC = 'mnemonic'
@@ -83,7 +71,6 @@ const derivationPath = ref('m/0\'')
 const loginResult = ref<null | boolean>(null)
 const autoSave = ref(false)
 const seedVisible = ref(false)
-const callbackUrlForLoginWithNewTab = ref<string | null>(null)
 
 const { $localStorage } = useNuxtApp()
 
@@ -181,7 +168,7 @@ const authLoginViaNewTab = async () => {
   loginResult.value = null
 
   try {
-    callbackUrlForLoginWithNewTab.value = await $fetch<string>('/api/lnurl-auth/prepareForFrontend', {
+    const callbackUrl = await $fetch<string>('/api/lnurl-auth/prepareForFrontend', {
       method: 'POST',
       body: { 
         lnurl: lnurl.value,
@@ -189,7 +176,7 @@ const authLoginViaNewTab = async () => {
         mnemonic: wallet.value
       },
     })
-    window.open(callbackUrlForLoginWithNewTab.value, '_blank');
+    window.open(callbackUrl, '_blank');
    } catch (error) {
     console.error(error)
     loginResult.value = false
