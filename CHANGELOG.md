@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.0.10
+
+[compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v0.0.9...v0.0.10)
+
+### 🚀 Enhancements
+
+- **wallet:** On LoginViaNewTab open the new Tab immediately ([9244c7b](https://github.com/thespielplatz/foos-tsp-tools/commit/9244c7b))
+
+### 🩹 Fixes
+
+- Package.json format ([6aa3c41](https://github.com/thespielplatz/foos-tsp-tools/commit/6aa3c41))
+
+### 🏡 Chore
+
+- Create change log ([6670924](https://github.com/thespielplatz/foos-tsp-tools/commit/6670924))
+- Add changelogen to bumping and leave only patch ([ad55233](https://github.com/thespielplatz/foos-tsp-tools/commit/ad55233))
+- **wallet:** Change LoginViaNewTab icon and remove open in a new tab link ([69d6f2b](https://github.com/thespielplatz/foos-tsp-tools/commit/69d6f2b))
+
+### ❤️ Contributors
+
+- Thespielplatz <informatics@gmx.net>
+
 ## v0.0.8...v0.0.9
 
 [compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v0.0.8...v0.0.9)
