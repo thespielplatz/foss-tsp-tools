@@ -9,7 +9,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "bump-patch": "npm version patch && git push && git push --tags",
+    "bump-minor": "npm version minor && git push && git push --tags",
+    "bump-major": "npm version major && git push && git push --tags"    
   },
   "dependencies": {
     "bech32": "^2.0.0",
