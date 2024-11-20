@@ -1,11 +1,12 @@
 # Based On: https://github.com/marketplace/actions/build-and-push-docker-images
-
-name: Docker build and push to docker hub
+name: Docker build and push to docker hub on tag
 
 on:
   push:
+    tags:
+      - 'v*'
     branches:
-      - main  # Trigger the workflow on push or pull request to the main branch
+      - main 
 
 jobs:
   docker:
@@ -14,9 +15,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4.1.7
         
-      - name: Set tag by date
-        id: tagbydate
-        run: echo "tag=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+      - name: Extract version from package.json
+        id: extract_version
+        run: |
+          VERSION=$(jq -r '.version' package.json)
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
     
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -33,7 +36,7 @@ jobs:
           push: true
           tags: |
             ${{ vars.DOCKER_TAG }}:latest
-            ${{ vars.DOCKER_TAG }}:${{ steps.tagbydate.outputs.tag }}
+            ${{ vars.DOCKER_TAG }}:${{ steps.extract_version.outputs.version }}
 
   deploy:
     runs-on: ubuntu-latest
