@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.0.11
+
+[compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v0.0.10...v0.0.11)
+
+### 🏡 Chore
+
+- Add tag link to version ([32ec071](https://github.com/thespielplatz/foos-tsp-tools/commit/32ec071))
+
+### 🎨 Styles
+
+- **footer:** Change version to badge ([62caf72](https://github.com/thespielplatz/foos-tsp-tools/commit/62caf72))
+
+### ❤️ Contributors
+
+- Thespielplatz <informatics@gmx.net>
+
 ## v0.0.10
 
 [compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v0.0.9...v0.0.10)
