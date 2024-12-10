@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1
 
-ARG NODE_VERSION=20.15.1
+ARG NODE_VERSION=22.11.0
 
 FROM node:${NODE_VERSION}-slim AS base
 
@@ -11,7 +11,7 @@ ENV NODE_ENV=production
 WORKDIR /src
 
 # Build
-FROM base as build
+FROM base AS build
 
 #COPY --link package.json package-lock.json . 
 # This isn’t working because the dependencies in package-lock.json are specific to the architecture 
