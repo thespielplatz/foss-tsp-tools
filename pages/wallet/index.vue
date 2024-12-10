@@ -123,6 +123,12 @@ watch(lnurl, async (newValue) => {
   }
 })
 
+watch(wallet, async (newValue) => {
+  if (autoSave.value) {
+    $localStorage.setItem(LOCALSTORAG_KEY_MNEMONIC, newValue)
+  }
+})
+
 const prepareLnurl = async (lnurl: string) => {
   let lnurlObject
   try {
