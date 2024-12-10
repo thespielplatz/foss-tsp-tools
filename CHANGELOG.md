@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v0.0.12
+
+[compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v0.0.11...v0.0.12)
+
+### 🚀 Enhancements
+
+- **wallet:** Show wallet seed loading state in toast ([84ed081](https://github.com/thespielplatz/foos-tsp-tools/commit/84ed081))
+
+### 🩹 Fixes
+
+- **wallet:** Autosave wallet seed on change ([d37250a](https://github.com/thespielplatz/foos-tsp-tools/commit/d37250a))
+- Adjust typescript version due docker build error ([e2b2d99](https://github.com/thespielplatz/foos-tsp-tools/commit/e2b2d99))
+
+### 🏡 Chore
+
+- Update packages ([e37c869](https://github.com/thespielplatz/foos-tsp-tools/commit/e37c869))
+
+### ❤️ Contributors
+
+- Thespielplatz <informatics@gmx.net>
+
 ## v0.0.11
 
 [compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v0.0.10...v0.0.11)
