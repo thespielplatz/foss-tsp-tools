@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import packageJson from './package.json' assert { type: 'json' }
 
-import packageJson from './package.json'
+const packageJsonTyped = packageJson as {
+  version: string
+  meta?: { 'special-version'?: string }
+}
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
@@ -9,7 +13,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      version: packageJson.version,
+      version: packageJsonTyped.meta?.['special-version'] || packageJsonTyped.version,
     },
   },  
   css: [
