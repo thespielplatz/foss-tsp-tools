@@ -13,6 +13,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
+      releasedVersion: packageJsonTyped.version,
       version: packageJsonTyped.meta?.['special-version'] || packageJsonTyped.version,
     },
   },  
