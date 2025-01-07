@@ -9,16 +9,16 @@
     role="alert"
     @click="hideToast"
   >
-  <div class="flex gap-2 items-center justify-normal">
-    <div class="hover:text-gray-600 hover:cursor-pointer">
-      <slot />
+    <div class="flex gap-2 items-center justify-normal">
+      <div class="hover:text-gray-600 hover:cursor-pointer">
+        <slot />
+      </div>
+      <button
+        class="text-gray-400 hover:text-gray-600"
+      >
+        &times;
+      </button>
     </div>
-    <button
-      class="text-gray-400 hover:text-gray-600"
-    >
-      &times
-    </button>
-  </div>
   </div>
 </template>
 

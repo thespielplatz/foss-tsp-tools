@@ -1,24 +1,23 @@
 <template>
-  <a 
-    v-if="href" 
+  <a
+    v-if="href"
     :href="href"
-    :target="target" 
+    :target="target"
     class="underline decoration-accent hover:decoration-white flex gap-1 items-center"
   >
-    <slot></slot>
+    <slot />
   </a>
-  <span 
-    v-else 
-    @click="handleClick" 
+  <span
+    v-else
     class="underline decoration-accent hover:decoration-white cursor-pointer inline-flex gap-1 items-center"
+    @click="handleClick"
   >
-    <slot></slot>
+    <slot />
   </span>
 </template>
 
 <script setup lang="ts">
-
-const props = defineProps<{
+defineProps<{
   href?: string;
   target?: string;
 }>()

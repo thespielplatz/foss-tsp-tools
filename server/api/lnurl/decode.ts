@@ -12,7 +12,7 @@ export default defineEventHandler((event): string => {
   try {
     const decoded = LNURL.decode(lnurl)
     return decoded
-  } catch (error) {
-    throw createError({ message: "Failed to decode lnurl" })
+  } catch {
+    throw createError({ message: 'Failed to decode lnurl' })
   }
 })

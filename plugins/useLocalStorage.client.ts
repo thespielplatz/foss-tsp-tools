@@ -13,10 +13,10 @@ const localStoragePlugin = {
   },
 }
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(() => {
   return {
     provide: {
-      localStorage: localStoragePlugin
-    }
+      localStorage: localStoragePlugin,
+    },
   }
 })

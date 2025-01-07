@@ -1,23 +1,32 @@
 <template>
-    <Toast
-      :state="authLoadSeedState"
-      :autoHide="2500"
-      >
-      {{ autoLoadSeedText }}
+  <Toast
+    :state="authLoadSeedState"
+    :auto-hide="2500"
+  >
+    {{ autoLoadSeedText }}
   </Toast>
   <div class="pt-10">
-    <div class="text-2xl font-black">LNURL Web Wallet</div>
+    <div class="text-2xl font-black">
+      LNURL Web Wallet
+    </div>
   </div>
   <div class="pt-5">
     <div class="flex gap-1 items-center">
-      <div class="text-xl font-bold">Wallet</div>
+      <div class="text-xl font-bold">
+        Wallet
+      </div>
     </div>
-    
-    <textarea v-if="seedVisible"
-      class="w-full h-20 border-2 border-gray-300 rounded-lg p-2"
+
+    <textarea
+      v-if="seedVisible"
       v-model="wallet"
-      placeholder="seed" />
-    <div v-else class="pb-1">
+      class="w-full h-20 border-2 border-gray-300 rounded-lg p-2"
+      placeholder="seed"
+    />
+    <div
+      v-else
+      class="pb-1"
+    >
       <div class="w-full h-20 border-2 border-gray-300 rounded-lg p-2 blur-sm">
         {{ replaceCharacters(wallet, '#') }}
       </div>
@@ -30,24 +39,30 @@
         <b-icon-eye-slash-fill v-if="!seedVisible" /><b-icon-eye-fill v-if="seedVisible" /><span>Seed</span>
       </ButtonDefault>
       <ButtonDefault @click="toggleAutoSave">
-        <b-icon-floppy v-if="!autoSave" /><b-icon-floppy-fill v-if="autoSave" /><span>Autosave: </span><span>{{ autoSave ? 'ON ' : 'OFF'}}</span>
+        <b-icon-floppy v-if="!autoSave" /><b-icon-floppy-fill v-if="autoSave" /><span>Autosave: </span><span>{{ autoSave ? 'ON ' : 'OFF' }}</span>
       </ButtonDefault>
     </div>
   </div>
   <div class="pt-5">
-    <div class="text-xl font-bold">LNURL</div>
+    <div class="text-xl font-bold">
+      LNURL
+    </div>
     <textarea
-      class="w-full h-20 border-2 border-gray-300 rounded-lg p-2"
       v-model="lnurl"
-      placeholder="Paste your lnurl here"></textarea>
-      <div>
-        <span class="font-bold">Type: </span>{{ lnurlType }}
-      </div>
+      class="w-full h-20 border-2 border-gray-300 rounded-lg p-2"
+      placeholder="Paste your lnurl here"
+    />
+    <div>
+      <span class="font-bold">Type: </span>{{ lnurlType }}
+    </div>
   </div>
-  <div v-if="false && lnurlType == 'none'" class="pt-5">
+  <div
+    v-if="false && lnurlType == 'none'"
+    class="pt-5"
+  >
     <div>Not Implemented</div>
   </div>
-  <div v-if="lnurlType == 'auth'" >
+  <div v-if="lnurlType == 'auth'">
     <div>
       <span class="font-bold">Derivation Path: </span><span class="font-mono">{{ derivationPath }}</span>
     </div>
@@ -60,15 +75,14 @@
       </ButtonDefault>
     </div>
   </div>
-  <div v-if="loginResult != null" >
+  <div v-if="loginResult != null">
     <div>
       <span class="font-bold">Result: </span><span :class="loginResult ? 'text-green-600' : 'text-red-700'">{{ loginResult }}</span>
     </div>
   </div>
 </template>
- 
-<script lang="ts" setup>
 
+<script lang="ts" setup>
 import ButtonDefault from '~/components/wallet/ButtonDefault.vue'
 import Toast from '~/components/typography/Toast.vue'
 
@@ -149,10 +163,10 @@ const prepareLnurl = async (lnurl: string) => {
   let lnurlObject
   try {
     const data = await $fetch('/api/lnurl/decode', {
-      query: { lnurl }
+      query: { lnurl },
     })
     lnurlObject = data
-  } catch (error) {
+  } catch {
     lnurlType.value = 'Could not decode lnurl or type not implemented yet'
   }
 
@@ -174,10 +188,10 @@ const authLoginViaBackend = async () => {
   try {
     loginResult.value = await $fetch('/api/lnurl-auth/login', {
       method: 'POST',
-      body: { 
+      body: {
         lnurl: lnurl.value,
         derivationPath: derivationPath.value,
-        mnemonic: wallet.value
+        mnemonic: wallet.value,
       },
     })
   } catch (error) {
@@ -192,16 +206,16 @@ const authLoginViaNewTab = async () => {
   try {
     const callbackUrl = await $fetch<string>('/api/lnurl-auth/prepareForFrontend', {
       method: 'POST',
-      body: { 
+      body: {
         lnurl: lnurl.value,
         derivationPath: derivationPath.value,
-        mnemonic: wallet.value
+        mnemonic: wallet.value,
       },
     })
-    window.open(callbackUrl, '_blank');
-   } catch (error) {
+    window.open(callbackUrl, '_blank')
+  } catch (error) {
     console.error(error)
     loginResult.value = false
-   }
+  }
 }
 </script>

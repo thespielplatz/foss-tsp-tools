@@ -1,10 +1,11 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getParamSafe = (body: any, key: string): string => {
   if (!(body[key])) {
-    throw new Error(`Missing ${key} parameter`)
+    throw new TypeError(`Missing ${key} parameter`)
   }
   const value = body[key]
   if (typeof value !== 'string') {
-    throw new Error(`${key} parameter must be a string`)
+    throw new TypeError(`${key} parameter must be a string`)
   }
 
   return value

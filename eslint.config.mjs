@@ -19,6 +19,8 @@ export default createConfigForNuxt({
     rules: {
       '@stylistic/brace-style': 'off',
       '@stylistic/member-delimiter-style': 'off',
+      '@vue/singleline-html-element-content-newline': 'off',
+      'vue/multi-word-component-names': 'off',
     },
   },
   )

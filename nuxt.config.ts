@@ -7,27 +7,27 @@ const packageJsonTyped = packageJson as {
 }
 
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
-  devtools: { 
+  devtools: {
     enabled: true,
   },
+
+  css: [
+    '@/assets/css/tailwind.css',
+    '@/assets/css/global.css',
+  ],
   runtimeConfig: {
     public: {
       releasedVersion: packageJsonTyped.version,
       version: packageJsonTyped.meta?.['special-version'] || packageJsonTyped.version,
     },
-  },  
-  css: [
-    '@/assets/css/tailwind.css',
-    '@/assets/css/global.css',
-  ],
+  }, compatibilityDate: '2024-04-03',
+  typescript: {
+    typeCheck: true,
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
-  },
-  typescript: {
-    typeCheck: true
   },
 })

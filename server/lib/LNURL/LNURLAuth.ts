@@ -1,8 +1,8 @@
 // Specification LNURLAuth https://github.com/lnurl/luds/blob/luds/04.md
 
+import { Buffer } from 'node:buffer'
+// eslint-disable-next-line import/no-named-default
 import { default as secp256k1 } from 'secp256k1'
-
-import { Buffer } from 'buffer'
 
 import LNURL from './LNURL'
 

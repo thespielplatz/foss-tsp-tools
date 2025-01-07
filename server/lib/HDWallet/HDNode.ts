@@ -1,5 +1,5 @@
-import crypto from 'crypto'
-import * as bip32 from 'bip32'
+import crypto from 'node:crypto'
+import type * as bip32 from 'bip32'
 
 export default class HDNode {
   sign(messageAsHex: string, outputFormat: 'hex' | 'base64') {
