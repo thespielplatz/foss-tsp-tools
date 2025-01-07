@@ -1,8 +1,18 @@
 # Free and Open Source Tools of TheSpielplatz
 
-[![MIT License Badge](docs/img/license-badge.svg)](LICENSE)
+<p>
+  <a href="https://github.com/thespielplatz/foss-tsp-tools/">
+    <img src="https://img.shields.io/github/package-json/v/thespielplatz/foss-tsp-tools?color=F7941E" alt="Version">
+  </a>
+  <a href="https://github.com/thespielplatz/foss-tsp-tools/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/thespielplatz/foss-tsp-tools?color=F7941E" alt="Licence">
+  </a>
+  <a href="https://github.com/thespielplatz/nuxt-auth/stargazers">
+    <img src="https://img.shields.io/github/stars/thespielplatz/foss-tsp-tools.svg?style=flat&color=F7941E" alt="Stars">
+  </a>
+</p>
 
-Foos Tools of TheSpielplatz
+Foss Tools of TheSpielplatz
 
 ## Project Overview
 
