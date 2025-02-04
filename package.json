@@ -10,7 +10,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "bump-patch": "npm run lint && npx changelogen@latest --release && git push --follow-tags",
+    "bump-version": "npm run lint && npx changelogen@latest --release && git push --follow-tags",
     "lint": "eslint ."
   },
   "dependencies": {
