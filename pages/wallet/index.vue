@@ -1,10 +1,4 @@
 <template>
-  <Toast
-    :state="authLoadSeedState"
-    :auto-hide="2500"
-  >
-    {{ autoLoadSeedText }}
-  </Toast>
   <div class="pt-10">
     <div class="text-2xl font-black">
       LNURL Web Wallet
@@ -94,7 +88,7 @@
 </template>
 
 <script lang="ts" setup>
-import Toast from '~/components/typography/Toast.vue'
+const toast = useToast()
 
 const LOCALSTORAG_KEY_MNEMONIC = 'mnemonic'
 
@@ -105,8 +99,6 @@ const derivationPath = ref('m/0\'')
 const loginResult = ref<null | boolean>(null)
 const autoSave = ref(false)
 const seedVisible = ref(false)
-const autoLoadSeedText = ref('')
-const authLoadSeedState = ref<'normal' | 'success'>('normal')
 
 const { $localStorage } = useNuxtApp()
 
@@ -126,12 +118,10 @@ onMounted(() => {
     if (mnemonic) {
       wallet.value = mnemonic
       autoSave.value = true
-      autoLoadSeedText.value = 'Loaded from local storage'
-      authLoadSeedState.value = 'normal'
+      toast.add({ title: 'Seed loaded from local storage', color: 'info' })
     } else {
       await generateNewWallet()
-      authLoadSeedState.value = 'success'
-      autoLoadSeedText.value = 'Seed generated'
+      toast.add({ title: 'New seed generated', color: 'info' })
     }
   })
 })
