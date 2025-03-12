@@ -16,22 +16,18 @@
         Wallet
       </div>
     </div>
-
-    <textarea
+    <UTextarea
       v-if="seedVisible"
       v-model="wallet"
-      class="w-full h-20 border-2 border-gray-300 rounded-lg p-2"
       placeholder="seed"
+      class="w-full"
     />
-    <div
+    <UTextarea
       v-else
-      class="pb-1"
-    >
-      <div class="w-full h-20 border-2 border-gray-300 rounded-lg p-2 blur-sm">
-        {{ replaceCharacters(wallet, '#') }}
-      </div>
-    </div>
-    <div class="flex gap-1">
+      class="w-full blur-sm"
+      :value="replaceCharacters(wallet, '#')"
+    />
+    <div class="flex gap-1 pt-2">
       <UButton
         icon="i-iconoir-plus-square-solid"
         @click="generateNewWallet"
@@ -78,12 +74,14 @@
     <div class="flex gap-1">
       <UButton
         icon="i-iconoir-arrow-up-circle-solid"
-        @click="authLoginViaNewTab">
+        @click="authLoginViaNewTab"
+      >
         Login<span class="italic text-xs">(Request via new tab)</span>
       </UButton>
       <UButton
         icon="i-iconoir-arrow-right-circle-solid"
-        @click="authLoginViaBackend">
+        @click="authLoginViaBackend"
+      >
         Login<span class="italic text-xs">(Request via Backend)</span>
       </UButton>
     </div>
