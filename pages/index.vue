@@ -7,11 +7,19 @@
         target="_blank"
       >TheSpielplatz</a>
     </div>
-    <div class="pt-10">
-      <a
-        class="underline"
-        href="/wallet"
-      >LNURL Web Wallet</a>
-    </div>
+    <ul class="pt-10">
+      <li>
+        <a
+          class="underline"
+          href="/wallet"
+        >LNURL Web Wallet</a>
+      </li>
+      <li>
+        <a
+          class="underline"
+          href="/qr-code-generator"
+        >QR Code Generator</a>
+      </li>
+    </ul>
   </div>
 </template>
