@@ -1,33 +1,26 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import packageJson from './package.json' assert { type: 'json' }
-
-const packageJsonTyped = packageJson as {
-  version: string
-  meta?: { 'special-version'?: string }
-}
 
 export default defineNuxtConfig({
+  modules: [
+    '@nuxt/ui',
+    '@thespielplatz/nuxt-dev-base',
+  ],
   devtools: {
     enabled: true,
   },
-
   css: [
-    '@/assets/css/tailwind.css',
-    '@/assets/css/global.css',
+    '~/assets/css/main.css',
   ],
-  runtimeConfig: {
-    public: {
-      releasedVersion: packageJsonTyped.version,
-      version: packageJsonTyped.meta?.['special-version'] || packageJsonTyped.version,
+  ui: {
+    theme: {
+      colors: ['primary', 'secondary', 'info', 'success', 'warning', 'error', 'footer'],
     },
-  }, compatibilityDate: '2024-04-03',
+  },
+  experimental: {
+    appManifest: false,
+  },
+  compatibilityDate: '2024-04-03',
   typescript: {
     typeCheck: true,
-  },
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
   },
 })

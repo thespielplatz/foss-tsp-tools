@@ -186,7 +186,7 @@ const authLoginViaBackend = async () => {
   loginResult.value = null
 
   try {
-    loginResult.value = await $fetch('/api/lnurl-auth/login', {
+    const login = await $fetch('/api/lnurl-auth/login', {
       method: 'POST',
       body: {
         lnurl: lnurl.value,
@@ -194,6 +194,7 @@ const authLoginViaBackend = async () => {
         mnemonic: wallet.value,
       },
     })
+    loginResult.value = login
   } catch (error) {
     console.error(error)
     loginResult.value = false

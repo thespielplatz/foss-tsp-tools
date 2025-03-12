@@ -1,0 +1,8 @@
+@import "tailwindcss" theme(static);
+@import "@nuxt/ui";
+
+
+@theme({ 
+  --color-myprimary: #C56200;
+  --color-myprimary-lighter: #E67300;
+}
