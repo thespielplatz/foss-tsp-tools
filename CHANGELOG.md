@@ -1,6 +1,39 @@
 # Changelog
 
 
+## v0.0.13
+
+[compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v0.0.12...v0.0.13)
+
+### 🚀 Enhancements
+
+- Add qr code generator ([60daef1](https://github.com/thespielplatz/foos-tsp-tools/commit/60daef1))
+
+### 🩹 Fixes
+
+- **ci:** Pipeline step orders and remove doubled login action ([7792c4d](https://github.com/thespielplatz/foos-tsp-tools/commit/7792c4d))
+- Release in link in footer ([dcfad63](https://github.com/thespielplatz/foos-tsp-tools/commit/dcfad63))
+
+### 📦 Build
+
+- Add lint to npm run bump-patch ([94c1b09](https://github.com/thespielplatz/foos-tsp-tools/commit/94c1b09))
+
+### 🏡 Chore
+
+- **ci:** Add possibility to build and push a commit ([66e73dd](https://github.com/thespielplatz/foos-tsp-tools/commit/66e73dd))
+- Update readme badges ([81ae2f3](https://github.com/thespielplatz/foos-tsp-tools/commit/81ae2f3))
+- Add eslint ([08ca69e](https://github.com/thespielplatz/foos-tsp-tools/commit/08ca69e))
+- Eslint fixes ([6dda745](https://github.com/thespielplatz/foos-tsp-tools/commit/6dda745))
+
+### 🤖 CI
+
+- Change pipeline to run on github release i/o tag push ([1aa8d1e](https://github.com/thespielplatz/foos-tsp-tools/commit/1aa8d1e))
+- Change bump version script name ([77041f8](https://github.com/thespielplatz/foos-tsp-tools/commit/77041f8))
+
+### ❤️ Contributors
+
+- Thespielplatz <informatics@gmx.net>
+
 ## v0.0.12
 
 [compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v0.0.11...v0.0.12)
