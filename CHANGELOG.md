@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v0.0.14
+
+[compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v0.0.13...v0.0.14)
+
+### 💅 Refactors
+
+- Remove buttondefault and use UButton ([ee1e898](https://github.com/thespielplatz/foos-tsp-tools/commit/ee1e898))
+- **qr-code-generator:** Update ui to nuxtui ([fc55c0c](https://github.com/thespielplatz/foos-tsp-tools/commit/fc55c0c))
+
+### 🏡 Chore
+
+- Update to nuxtui and nuxt-dev-base ([63aaa00](https://github.com/thespielplatz/foos-tsp-tools/commit/63aaa00))
+- Udpate to UContainer ([c02c70a](https://github.com/thespielplatz/foos-tsp-tools/commit/c02c70a))
+- Remove unused components ([a47295b](https://github.com/thespielplatz/foos-tsp-tools/commit/a47295b))
+- **wallet:** Use UTextarea ([081dd31](https://github.com/thespielplatz/foos-tsp-tools/commit/081dd31))
+- **wallet:** Replace toast with UToast ([b5af5f5](https://github.com/thespielplatz/foos-tsp-tools/commit/b5af5f5))
+
+### ❤️ Contributors
+
+- Thespielplatz <informatics@gmx.net>
+
 ## v0.0.13
 
 [compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v0.0.12...v0.0.13)
