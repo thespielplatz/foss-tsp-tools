@@ -32,15 +32,24 @@
       </div>
     </div>
     <div class="flex gap-1">
-      <ButtonDefault @click="generateNewWallet">
-        <b-icon-plus-square /><span>New</span>
-      </ButtonDefault>
-      <ButtonDefault @click="toggleSeedVisibility">
-        <b-icon-eye-slash-fill v-if="!seedVisible" /><b-icon-eye-fill v-if="seedVisible" /><span>Seed</span>
-      </ButtonDefault>
-      <ButtonDefault @click="toggleAutoSave">
-        <b-icon-floppy v-if="!autoSave" /><b-icon-floppy-fill v-if="autoSave" /><span>Autosave: </span><span>{{ autoSave ? 'ON ' : 'OFF' }}</span>
-      </ButtonDefault>
+      <UButton
+        icon="i-iconoir-plus-square-solid"
+        @click="generateNewWallet"
+      >
+        New
+      </UButton>
+      <UButton
+        :icon="seedVisible ? 'i-iconoir-eye-solid' : 'i-iconoir-eye-closed'"
+        @click="toggleSeedVisibility"
+      >
+        Seed
+      </UButton>
+      <UButton
+        :icon="autoSave ? 'i-iconoir-save-action-floppy' : 'i-iconoir-save-floppy-disk'"
+        @click="toggleAutoSave"
+      >
+        Autosave: <span>{{ autoSave ? 'ON ' : 'OFF' }}</span>
+      </UButton>
     </div>
   </div>
   <div class="pt-5">
@@ -67,12 +76,16 @@
       <span class="font-bold">Derivation Path: </span><span class="font-mono">{{ derivationPath }}</span>
     </div>
     <div class="flex gap-1">
-      <ButtonDefault @click="authLoginViaNewTab">
-        <b-icon-box-arrow-up-right /><span>Login</span><span class="italic text-xs">(Request via new tab)</span>
-      </ButtonDefault>
-      <ButtonDefault @click="authLoginViaBackend">
-        <b-icon-box-arrow-in-right /><span>Login</span><span class="italic text-xs">(Request via Backend)</span>
-      </ButtonDefault>
+      <UButton
+        icon="i-iconoir-arrow-up-circle-solid"
+        @click="authLoginViaNewTab">
+        Login<span class="italic text-xs">(Request via new tab)</span>
+      </UButton>
+      <UButton
+        icon="i-iconoir-arrow-right-circle-solid"
+        @click="authLoginViaBackend">
+        Login<span class="italic text-xs">(Request via Backend)</span>
+      </UButton>
     </div>
   </div>
   <div v-if="loginResult != null">
@@ -83,7 +96,6 @@
 </template>
 
 <script lang="ts" setup>
-import ButtonDefault from '~/components/wallet/ButtonDefault.vue'
 import Toast from '~/components/typography/Toast.vue'
 
 const LOCALSTORAG_KEY_MNEMONIC = 'mnemonic'
