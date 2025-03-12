@@ -1,12 +1,8 @@
 <template>
-  <div class="font-sans min-h-screen flex flex-col">
-    <CenterContainer class="flex-1">
+  <div class="flex flex-col min-h-dvh">
+    <UContainer class="flex-grow px-0 min-w-4xl">
       <NuxtPage />
-    </CenterContainer>
-    <FooterMain class="shrink-0" />
+    </UContainer>
+    <FooterMain />
   </div>
 </template>
-
-<script setup lang="ts">
-import CenterContainer from '~/components/layout/CenterContainer.vue'
-</script>
