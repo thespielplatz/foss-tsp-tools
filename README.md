@@ -14,11 +14,22 @@
 
 Foss Tools of TheSpielplatz
 
-## Project Overview
+- Versioning and Tags and Releases and Docker Hub
 
-Features: See [Features](docs/FEATURES.md)
+## Features
 
-Roadmap: See [Features](docs/ROADMAP.md)
+### Simple Lightning WebWallet for LNURLAuth
+
+- Autosave seed
+- Paste LNURLAuth and press Login via Backend & Frontent
+
+### QR Code Generator
+
+- Create QR Code in frontend only
+
+## Project Roadmap
+
+See [Features](docs/ROADMAP.md)
 
 ## How to use
 
