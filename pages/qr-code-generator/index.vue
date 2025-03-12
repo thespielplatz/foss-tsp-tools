@@ -4,10 +4,11 @@
       QR Coder Generator
     </div>
     <div class="pt-10">
-      <textarea
+      <UTextarea
         v-model="text"
-        class="border w-full"
-        rows="5"
+        class="w-full"
+        placeholder="Please enter text here to generate a qr code"
+        :rows="8"
       />
     </div>
     <div class="flex justify-center pt-10">
