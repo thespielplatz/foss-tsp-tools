@@ -16,26 +16,41 @@
       <div class="flex flex-col gap-2">
         <UCheckbox
           v-model="allowLowercase"
-          label="Allow Lowercase (abc)" />
+          label="Allow Lowercase (abc)"
+        />
         <UCheckbox
           v-model="allowUppercase"
-          label="Allow Uppercase (ABC)" />
+          label="Allow Uppercase (ABC)"
+        />
         <UCheckbox
           v-model="allowNumbers"
-          label="Allow Numbers (0-9)" />
+          label="Allow Numbers (0-9)"
+        />
         <UCheckbox
           v-model="excludeSimilar"
-          label="Exclude Similar (iI1loO0)" />
+          label="Exclude Similar (iI1loO0)"
+        />
         <UCheckbox
           v-model="excludeDuplicate"
-          label="Exclude Duplicate Characters" />
+          label="Exclude Duplicate Characters"
+        />
       </div>
     </div>
     <div class="h-6" />
-    <UButton icon="i-material-symbols-settings-outline-rounded" @click="generatePassword">Generate</UButton>
+    <UButton
+      icon="i-material-symbols-settings-outline-rounded"
+      @click="generatePassword"
+    >
+      Generate
+    </UButton>
     <div class="h-6" />
     <UFormField :label="`Password (length: ${generatedPassword.length || ''})`">
-      <UTextarea v-model="generatedPassword" class="w-full" color="neutral" disabled />
+      <UTextarea
+        v-model="generatedPassword"
+        class="w-full"
+        color="neutral"
+        disabled
+      />
     </UFormField>
   </div>
 </template>
