@@ -2,7 +2,7 @@
 @import "@nuxt/ui";
 
 
-@theme({ 
+@theme static { 
   --color-myprimary: #C56200;
   --color-myprimary-lighter: #E67300;
 }
