@@ -20,6 +20,12 @@
           href="/qr-code-generator"
         >QR Code Generator</a>
       </li>
+      <li>
+        <a
+          class="underline"
+          href="/password-generator"
+        >Password Generator</a>
+      </li>
     </ul>
   </div>
 </template>
