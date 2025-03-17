@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.1.0
+
+[compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v1.0.0...v1.1.0)
+
+### 🚀 Enhancements
+
+- Add password generator ([94a6ac8](https://github.com/thespielplatz/foos-tsp-tools/commit/94a6ac8))
+
+### 🏡 Chore
+
+- Fix tailwind css ([ce58627](https://github.com/thespielplatz/foos-tsp-tools/commit/ce58627))
+- Eslint fix ([73bca41](https://github.com/thespielplatz/foos-tsp-tools/commit/73bca41))
+
+### ❤️ Contributors
+
+- Thespielplatz <informatics@gmx.net>
+
 ## v0.0.14
 
 [compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v0.0.13...v0.0.14)
