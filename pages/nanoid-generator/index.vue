@@ -8,7 +8,9 @@
       A tiny, secure, URL-friendly, unique string ID generator for JavaScript. Length: 21 chars
     </div>
     <div class="pt-5">
-      <div class="font-bold">Comparison with UUID</div>
+      <div class="font-bold">
+        Comparison with UUID
+      </div>
       <ul class="list-disc pl-5">
         <li>Generation: NanoId has 126 random bits, uuid 122</li>
         <li>Chance of duplication: NanoId one in a billion, uuid on in a 103 trillion</li>
