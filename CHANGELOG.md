@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.2.0
+
+[compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v1.1.0...v1.2.0)
+
+### 🚀 Enhancements
+
+- Add nano id generation ([bb161fa](https://github.com/thespielplatz/foos-tsp-tools/commit/bb161fa))
+
+### 🏡 Chore
+
+- Lint fix ([0f91299](https://github.com/thespielplatz/foos-tsp-tools/commit/0f91299))
+
+### ❤️ Contributors
+
+- Thespielplatz <informatics@gmx.net>
+
 ## v1.1.0
 
 [compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v1.0.0...v1.1.0)
