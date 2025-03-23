@@ -26,6 +26,12 @@
           href="/password-generator"
         >Password Generator</a>
       </li>
+      <li>
+        <a
+          class="underline"
+          href="/nanoid-generator"
+        >NanoId Generator</a>
+      </li>
     </ul>
   </div>
 </template>
