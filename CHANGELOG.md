@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.2.1
+
+[compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v1.2.0...v1.2.1)
+
+### 🩹 Fixes
+
+- Package name ([3fca891](https://github.com/thespielplatz/foos-tsp-tools/commit/3fca891))
+
+### 🏡 Chore
+
+- **qr-code:** Add qr code border ([22f6b36](https://github.com/thespielplatz/foos-tsp-tools/commit/22f6b36))
+
+### ❤️ Contributors
+
+- Thespielplatz <informatics@gmx.net>
+
 ## v1.2.0
 
 [compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v1.1.0...v1.2.0)
