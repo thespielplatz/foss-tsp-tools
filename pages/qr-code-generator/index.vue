@@ -40,7 +40,7 @@ const updateQrCode = (text: string) => {
   }
   qrCode.value = new QRCode({
     content: text,
-    padding: 0,
+    padding: 2,
     width: 200,
     height: 200,
     color: '#1e4563',
