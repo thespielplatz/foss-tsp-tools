@@ -32,6 +32,12 @@
           href="/nanoid-generator"
         >NanoId Generator</a>
       </li>
+      <li>
+        <a
+          class="underline"
+          href="/lndseed-word-checker"
+        >LND Seed word checker</a>
+      </li>
     </ul>
   </div>
 </template>
