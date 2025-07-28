@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@nuxt/ui": "^3.0.0",
+    "@scure/base": "^1.2.6",
     "@thespielplatz/nuxt-dev-base": "^1.2.3",
     "bech32": "2.0.0",
     "bip32": "4.0.0",

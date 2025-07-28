@@ -38,6 +38,12 @@
           href="/lndseed-word-checker"
         >LND Seed word checker</a>
       </li>
+      <li>
+        <a
+          class="underline"
+          href="/lnurl-decoder"
+        >LNURL Decoder</a>
+      </li>
     </ul>
   </div>
 </template>
