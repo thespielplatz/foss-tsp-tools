@@ -23,7 +23,10 @@
       </div>
     </div>
     <div class="pt-10">
-      For <a href="https://github.com/lightningnetwork/lnd/tree/master/aezeed" class="underline">aezeed</a>
+      For <a
+        href="https://github.com/lightningnetwork/lnd/tree/master/aezeed"
+        class="underline"
+      >aezeed</a>
     </div>
   </div>
 </template>
