@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.3.0
+
+[compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v1.2.1...v1.3.0)
+
+### 🚀 Enhancements
+
+- Add lnd seed checker ([5362826](https://github.com/thespielplatz/foos-tsp-tools/commit/5362826))
+- Add lnurl decode ([061f8eb](https://github.com/thespielplatz/foos-tsp-tools/commit/061f8eb))
+
+### 🏡 Chore
+
+- Npm audit fix ([1be019b](https://github.com/thespielplatz/foos-tsp-tools/commit/1be019b))
+
+### ❤️ Contributors
+
+- Thespielplatz <informatics@gmx.net>
+
 ## v1.2.1
 
 [compare changes](https://github.com/thespielplatz/foos-tsp-tools/compare/v1.2.0...v1.2.1)
